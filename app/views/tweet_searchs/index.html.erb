@@ -1,0 +1,26 @@
+<h1>Tweet Search</h1>
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<%= render 'tweet_searchs/new', locals: { new_search: @new_search } %>
+
+<table>
+    <tr>
+        <th>Username<th>
+        <th>Text<th>
+        <th>Favorite count<th>
+        <th>Retweet count<th>
+    </tr>
+    <% if @result_search -%>
+        <% @result_search.each do |tweet| %>
+        <tr>
+            <td><%= tweet.user.name -%></td>
+            <td><%= tweet.text -%></td>
+            <td><%= tweet.favorite_count -%></td>
+            <td><%= tweet.retweet_count -%></td>
+        </tr>
+        <% end -%>
+    <% end -%>
+</table>
