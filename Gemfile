@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rspec-rails', '3.6.1'
   gem 'rubocop', '~> 0.45.0'
   gem 'dotenv-rails', '2.2.1'
+  gem 'rails-controller-testing', '1.0.2'
 end
 
 group :development do
