@@ -2,12 +2,16 @@
 
 # twitter client to connect with twitter API
 class TwitterClient
+  MAX_TWEETS_PER_REQUEST = 10
   class << self
-    delegate :search, to: :client
+    def search(query)
+      client.search(query).take(MAX_TWEETS_PER_REQUEST)
+    end
 
     private
 
     attr_reader :client
+
     def client
       @client ||= Twitter::REST::Client.new do |config|
                     config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']

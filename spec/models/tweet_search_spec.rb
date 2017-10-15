@@ -26,4 +26,24 @@ RSpec.describe TweetSearch do
       end
     end
   end
+
+  describe '#search!' do
+    context 'when the tweet_search is valid' do
+      let(:query) { 'a query' }
+      it 'calls the twitter client search method' do
+        expect(TwitterClient).to receive(:search).with(query)
+        described_class.new(query: query).search!
+      end
+    end
+  end
+
+    describe '#search!' do
+    context 'when the tweet_search is not valid' do
+      let(:query) { '' }
+      it 'does not call the twitter client search method' do
+        expect(TwitterClient).to_not receive(:search).with(query)
+        described_class.new(query: query).search!
+      end
+    end
+  end
 end
