@@ -9,7 +9,6 @@ class TweetSearch
   validates :query, presence: true, length: { in: 1..500 }
 
   def search!
-    return errors unless valid?
     TwitterClient.search(query)
   end
 end
